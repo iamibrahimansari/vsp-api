@@ -1,12 +1,11 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-const path = require('node:path')
+const path = require('path')
 require('dotenv').config({path: path.join(__dirname, '..', '.env')})
 const jwt = require('jsonwebtoken');
 
 const userRegister = async (req, res) => {
   const {name, email, phone, profession, pwd, confirmpwd} = req.body;
-  console.log(req.body);
     try {
       const hashedPass = await bcrypt.hash(req.body.pwd, 10);
       if(req.body.pwd !== req.body.confirmpwd){
