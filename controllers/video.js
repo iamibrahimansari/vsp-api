@@ -1,6 +1,6 @@
 const Video = require('../models/video');
-const path = require('node:path');
-const fs = require('node:fs');
+const path = require('path');
+const fs = require('fs');
 
 //CREATE POST
 const createNewPost = async (req, res) => { 
@@ -15,7 +15,6 @@ const createNewPost = async (req, res) => {
 
     res.status(201).json({ message: 'Video uploaded successfully' });
   } catch (error) {
-    console.error('Error uploading video:', error);
     res.status(500).json({ error: 'Failed to upload video' });
   }
 }
@@ -45,7 +44,6 @@ const getVideoForStream = async (req, res) => {
       res.status(404).json({ error: 'Video not found' });
     }
   } catch (error) {
-    console.error('Error streaming video:', error);
     res.status(500).json({ error: 'Failed to stream video' });
   }
 };
